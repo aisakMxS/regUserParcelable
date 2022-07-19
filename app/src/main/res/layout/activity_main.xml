@@ -79,6 +79,62 @@
                 android:hint="Ingresar la misma contraseña"
                 android:singleLine="true" />
 
+            <TextView
+                android:id="@+id/txt_TitEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:padding="10dp"
+                android:text="Email:"
+                android:textColor="#3F51B5"
+                android:textSize="26sp" />
+
+            <EditText
+                android:id="@+id/txtEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Ingrese su email"
+                android:inputType="textEmailAddress"
+                android:padding="16dp"/>
+
+            <TextView
+                android:id="@+id/txt_TitEmail2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:padding="10dp"
+                android:text="Repetir Email:"
+                android:textColor="#3F51B5"
+                android:textSize="26sp" />
+
+            <EditText
+                android:id="@+id/txtEmailRep"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Repetir email"
+                android:inputType="textEmailAddress"
+                android:padding="16dp"/>
+
+            <TextView
+                android:id="@+id/txt_TitRol"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:padding="10dp"
+                android:text="Rol:"
+                android:textColor="#3F51B5"
+                android:textSize="26sp" />
+
+            <EditText
+                android:id="@+id/txtRol"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Admin o Invitado"
+                android:padding="16dp" />
+
             <Button
                 android:id="@+id/btnRegistrar"
                 android:layout_width="match_parent"

@@ -54,6 +54,30 @@
                 app:layout_constraintTop_toBottomOf="@+id/txtTitUser" />
 
             <TextView
+                android:id="@+id/txtEmail"
+                android:text="@{usuarios.email}"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:textAlignment="center"
+                android:textColor="#009688"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtUser" />
+
+            <TextView
+                android:id="@+id/txtRol"
+                android:text="@{usuarios.rol}"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:textAlignment="center"
+                android:textColor="#009688"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtEmail" />
+
+            <TextView
                 android:id="@+id/txtBienvenida"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -64,7 +88,9 @@
                 android:textColor="#F44336"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtUser" />
+                app:layout_constraintTop_toBottomOf="@+id/ratingBar" />
+
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>

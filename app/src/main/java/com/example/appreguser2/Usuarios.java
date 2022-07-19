@@ -7,17 +7,23 @@ public class Usuarios implements Parcelable {
     private String nombre;
     private String contra;
     private String repContra;
+    private String email;
+    private String rol;
 
-    public Usuarios(String usuario, String contra, String repContra) {
-        this.nombre = usuario;
+    public Usuarios(String nombre, String contra, String repContra, String email, String rol) {
+        this.nombre = nombre;
         this.contra = contra;
         this.repContra = repContra;
+        this.email = email;
+        this.rol = rol;
     }
 
     protected Usuarios(Parcel in) {
         nombre = in.readString();
         contra = in.readString();
         repContra = in.readString();
+        email = in.readString();
+        rol = in.readString();
     }
 
     @Override
@@ -25,6 +31,8 @@ public class Usuarios implements Parcelable {
         dest.writeString(nombre);
         dest.writeString(contra);
         dest.writeString(repContra);
+        dest.writeString(email);
+        dest.writeString(rol);
     }
 
     @Override
@@ -66,5 +74,21 @@ public class Usuarios implements Parcelable {
 
     public void setRepContra(String repContra) {
         this.repContra = repContra;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
     }
 }

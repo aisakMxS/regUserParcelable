@@ -5,11 +5,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Toast;
 
 import com.example.appreguser2.databinding.ActivityDetalleBinding;
 import com.example.appreguser2.databinding.ActivityMainBinding;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,12 +27,44 @@ public class MainActivity extends AppCompatActivity {
                String nombre = binding.txtNombre.getText().toString();
                String contra = binding.txtContra.getText().toString();
                String repContra = binding.txtRepContra.getText().toString();
+               String email = binding.txtEmail.getText().toString();
+               String repEmail = binding.txtEmailRep.getText().toString();
+               String rol = binding.txtRol.getText().toString();
 
 
-            if(!nombre.isEmpty() && !contra.isEmpty() && !repContra.isEmpty()){
+
+
+
+            if(!nombre.isEmpty() && !contra.isEmpty() && !repContra.isEmpty() && !email.isEmpty() && !rol.isEmpty()){
                 if(contra.length() >= 5){
                     if(repContra.equals(contra)) {
-                        abrirActivityDetalle(nombre, contra, repContra);
+                        if(ValidarEmail(email) == true){
+                            if(repEmail.equals(email)){
+                                if(rol.equalsIgnoreCase("admin") || rol.equalsIgnoreCase("invitado")){
+                                    abrirActivityDetalle(nombre, contra, repContra, email, rol);
+                                }else{
+                                    Context context = MainActivity.this;
+                                    CharSequence text = "Rol mal ingresado";
+                                    int duration = Toast.LENGTH_SHORT;
+                                    Toast toast = Toast.makeText(context, text, duration);
+                                    toast.show();
+                                }
+                            }else{
+                                Context context = MainActivity.this;
+                                CharSequence text = "Mail no coincide";
+                                int duration = Toast.LENGTH_SHORT;
+                                Toast toast = Toast.makeText(context, text, duration);
+                                toast.show();
+                            }
+                        }else{
+                            Context context = MainActivity.this;
+                            CharSequence text = "Mail no valido";
+                            int duration = Toast.LENGTH_SHORT;
+                            Toast toast = Toast.makeText(context, text, duration);
+                            toast.show();
+                        }
+
+
                     }else {
                         Context context = MainActivity.this;
                         CharSequence text = "Las contraseñas no coinciden!!";
@@ -55,10 +91,17 @@ public class MainActivity extends AppCompatActivity {
 
     
 
-    private void abrirActivityDetalle(String nom, String contra, String repContra){
+    private void abrirActivityDetalle(String nom, String contra, String repContra, String ema, String rl){
         Intent intent = new Intent(this, DetalleActivity.class);
-        Usuarios user = new Usuarios(nom, contra, repContra);
+        Usuarios user = new Usuarios(nom, contra, repContra, ema, rl);
         intent.putExtra(DetalleActivity.USUARIO_KEY, user);
         startActivity(intent);
     }
+
+    public boolean ValidarEmail(String email){
+        Pattern pattern= Pattern.compile("^(.+)@(.+)$");
+        Matcher matcher=pattern.matcher(email);
+        return matcher.matches();
+    }
+
 }
